@@ -33,6 +33,7 @@ const displayController = (function(){
 
         // loads last location selection, if any
         if (localStorage.lastLocInput){
+            userLocInput.value = localStorage.lastLocInput;
 
             fetchWeatherData(localStorage.lastLocInput, 'us')
             .then((dataJson) => renderData(dataJson))    
