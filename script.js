@@ -1,8 +1,3 @@
-let userLocation = prompt("enter a location").replace(/[^a-zA-Z0-9]/g, "%20");
-
-// API units options include 'us', 'metric', uk, 'base
-let units = "us";
-
 // API key (free API)
 const API_KEY = "VSGF7NCUVGWS7PTKPWJPVEKDB";
 
@@ -31,11 +26,20 @@ fetchWeatherData().catch(
 );
 
 const displayController = (function(){
+    let userLocation;
+    let units;
+
     const userLocInput = document.querySelector("input#user-location");
+    const userUnitsInput = document.querySelector("select#units");
     const submitUserLocBtn = document.querySelector("#submit-user-location-btn");
+
     submitUserLocBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        userLocation = userLocInput.value;
+        userLocation = userLocInput.value.replace(/[^a-zA-Z0-9]/g, "%20");
+        // API units options include 'us', 'metric', uk, 'base
+        units = userUnitsInput.value;
+        console.log(userLocation);
+        console.log(units);
         renderData();
     });
 
