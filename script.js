@@ -61,10 +61,7 @@ const displayController = (function(){
         units = userUnitsInput.value;
 
         fetchWeatherData(userLocation, units)
-            .then((dataJson) => {
-                clearData();
-                renderData(dataJson);
-            })    
+            .then((dataJson) => {renderData(dataJson);})    
             .catch((error) => console.error(error));
     })
 
@@ -89,6 +86,11 @@ const displayController = (function(){
     }
 
     const renderData = (dataJson)=>{
+        clearData();
+
+        const resolvedLoc = document.querySelector("#resolved-location-container");
+        resolvedLoc.innerText = `Location: ${dataJson.resolvedAddress}`;
+
         const table = document.querySelector("table")
         const row = document.createElement("tr");
         row.className = "data-row";

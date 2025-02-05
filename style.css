@@ -43,3 +43,8 @@ th, td{
 td:nth-child(2){
     width: 200px;
 }
+
+#resolved-location-container {
+    font-weight: bold;
+    margin: 10px 0px;
+}
