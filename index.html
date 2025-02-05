@@ -10,7 +10,21 @@
 <body>
     <div id="main-container">
         <div id="input-container">
-            Input container
+            <div id="location-input-container">
+                <form id = "location-form">
+                    <label for="user-location">Location</label>
+                    <input type="text" id="user-location" name="user-location" placeholder="San Francisco">
+                </form>
+            </div>
+            <div id="unit-toggle-container">
+                <label for="units">Units</label>
+                <select id="units" name="units">
+                    <option value = "us">US</option>
+                    <option value = "metric">Metric</option>
+                    <option value = "uk">UK</option>
+                    <option value = "base">Scientific</option>
+                </select>
+            </div>
         </div>
         <div id="data-container">
             Data container
