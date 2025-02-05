@@ -29,3 +29,12 @@ async function fetchWeatherData(){
 fetchWeatherData().catch(
     (error) => console.error(error)
 );
+
+const displayController = (function(){
+    const userLocInput = document.querySelector("input#user-location");
+    const submitUserLocBtn = document.querySelector("#submit-user-location-btn");
+    submitUserLocBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        userLocation = userLocInput.value;
+    });
+})();
