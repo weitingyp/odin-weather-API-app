@@ -44,7 +44,6 @@ const displayController = (function(){
     const renderData = (dataJson)=>{
         
         const dataContainer = document.querySelector("#data-container");
-        console.log(dataContainer);
         const table = document.createElement("table");
         const row = document.createElement("tr");
         const cell = document.createElement("td");
