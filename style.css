@@ -13,6 +13,10 @@
     margin: 36px 0px;
 }
 
+#submit-user-location-btn{
+    margin: 0px 12px;
+}
+
 /* reset form default styles */
 form {
     padding: 0;
