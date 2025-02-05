@@ -12,3 +12,21 @@
     gap: 12px;
     margin: 36px 0px;
 }
+
+/* reset form default styles */
+form {
+    padding: 0;
+    margin: 0;
+}
+
+#location-form label
+, #unit-toggle-container label{
+    display: inline-block;
+    width: 100px;
+}
+
+#location-form input
+, #unit-toggle-container select {
+    display: inline-block;
+    width: 200px;
+}
