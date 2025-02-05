@@ -13,6 +13,7 @@ const displayController = (function(){
         const dataContainer = document.querySelector("#data-container");
         const table = document.createElement("table");
         const row = document.createElement("tr");
+        row.id = "table-heading";
 
         const headings = ['Date'
                             ,'Conditions'
@@ -45,6 +46,18 @@ const displayController = (function(){
             .catch((error) => console.error(error));
     });
 
+    userUnitsInput.addEventListener('change', (e)=>{
+        // API units options include 'us', 'metric', uk, 'base
+        units = userUnitsInput.value;
+
+        fetchWeatherData()
+            .then((dataJson) => {
+                clearData();
+                renderData(dataJson);
+            })    
+            .catch((error) => console.error(error));
+    })
+
     // Fetch weather data using Weather API
     // Promises syntax
 
@@ -58,7 +71,7 @@ const displayController = (function(){
     */
 
     async function fetchWeatherData(){
-        const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${userLocation}?key=${API_KEY}`,{
+        const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${userLocation}?key=${API_KEY}&unitGroup=${units}`,{
             mode: 'cors'
             });
         const dataJson = await weatherResponse.json();
@@ -68,6 +81,7 @@ const displayController = (function(){
     const renderData = (dataJson)=>{
         const table = document.querySelector("table")
         const row = document.createElement("tr");
+        row.className = "data-row";
         const cell = document.createElement("td");
         
         const dataProp = ['datetime'
@@ -89,4 +103,10 @@ const displayController = (function(){
         }
 
     };
+
+    const clearData = ()=>{
+        const dataRows = document.querySelectorAll('tr.data-row');
+        dataRows.forEach( (row) => row.remove() );
+    };
+
 })();
