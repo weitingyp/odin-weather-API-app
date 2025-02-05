@@ -41,7 +41,7 @@ const displayController = (function(){
         // API units options include 'us', 'metric', uk, 'base
         units = userUnitsInput.value;
 
-        fetchWeatherData()
+        fetchWeatherData(userLocation, units)
             .then((dataJson) => renderData(dataJson))    
             .catch((error) => console.error(error));
     });
@@ -50,7 +50,7 @@ const displayController = (function(){
         // API units options include 'us', 'metric', uk, 'base
         units = userUnitsInput.value;
 
-        fetchWeatherData()
+        fetchWeatherData(userLocation, units)
             .then((dataJson) => {
                 clearData();
                 renderData(dataJson);
@@ -70,7 +70,7 @@ const displayController = (function(){
                                 .catch( (error) => {console.error(error)}); 
     */
 
-    async function fetchWeatherData(){
+    async function fetchWeatherData(userLocation, units){
         const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${userLocation}?key=${API_KEY}&unitGroup=${units}`,{
             mode: 'cors'
             });
