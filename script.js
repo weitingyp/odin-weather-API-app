@@ -36,5 +36,32 @@ const displayController = (function(){
     submitUserLocBtn.addEventListener('click', (e) => {
         e.preventDefault();
         userLocation = userLocInput.value;
+        renderData();
     });
+
+    const renderData = ()=>{
+        
+        const dataContainer = document.querySelector("#data-container");
+        console.log(dataContainer);
+        const table = document.createElement("table");
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+
+        const headings = ['Date'
+                            ,'Conditions'
+                            , 'Temp'
+                            , 'Feels Like'
+                            , 'Sunrise'
+                            , 'Sunset'
+        ]
+
+        dataContainer.appendChild(table);
+        table.appendChild(row);
+        for (const heading of headings){
+            const th = document.createElement("th");
+            th.innerText = heading;
+            row.appendChild(th);
+        }
+
+    };
 })();
