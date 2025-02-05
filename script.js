@@ -36,10 +36,10 @@ const displayController = (function(){
     submitUserLocBtn.addEventListener('click', (e) => {
         e.preventDefault();
         userLocation = userLocInput.value.replace(/[^a-zA-Z0-9]/g, "%20");
+        
         // API units options include 'us', 'metric', uk, 'base
         units = userUnitsInput.value;
-        console.log(userLocation);
-        console.log(units);
+        
         renderData();
     });
 
