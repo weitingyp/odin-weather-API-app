@@ -5,3 +5,10 @@
     align-content: start;
     justify-content: start;
 }
+
+#input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 36px 0px;
+}
