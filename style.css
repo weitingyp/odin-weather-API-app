@@ -34,3 +34,12 @@ form {
     display: inline-block;
     width: 200px;
 }
+
+th, td{
+    text-align: left;
+    width: 100px;
+}
+
+td:nth-child(2){
+    width: 200px;
+}
