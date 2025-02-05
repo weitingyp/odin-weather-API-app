@@ -30,6 +30,14 @@ const displayController = (function(){
             th.innerText = heading;
             row.appendChild(th);
         }
+
+        // loads last location selection, if any
+        if (localStorage.lastLocInput){
+
+            fetchWeatherData(localStorage.lastLocInput, 'us')
+            .then((dataJson) => renderData(dataJson))    
+            .catch((error) => console.error(error));
+        }
     };
 
     initData();
@@ -37,6 +45,7 @@ const displayController = (function(){
     submitUserLocBtn.addEventListener('click', (e) => {
         e.preventDefault();
         userLocation = userLocInput.value.replace(/[^a-zA-Z0-9]/g, "%20");
+        localStorage.lastLocInput = userLocation;
         
         // API units options include 'us', 'metric', uk, 'base
         units = userUnitsInput.value;
